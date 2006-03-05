@@ -1,0 +1,18 @@
+C2BF is a C compiler targeting brainfuck, written by the twisted mind of Gregor
+Richards.
+
+Like most compilers, C2BF involves a multi-step procedure. Basically, input .c
+files are turned into .o files using c2bf-cc. Then, those .o files are linked
+using c2bf-ld. The output binary can be stripped, and the bitwidth can be
+modified, by c2bf-strip and c2bf-1to*bit, respectively.
+
+Not all of C is supported yet, but I'm working on it. And you could be too!
+Next time c2bf-cc tells you that there's an undefined generation, define it in
+cc/genbf/<generation>.c :)
+
+But overall, enjoy. This is a ridiculous project with no real purpose, so just
+have some fun with it. Maybe take the abstract syntax tree generation and port
+the gneration to a different esolang. Maybe change the algorithms to be more
+efficient. Or maybe write the most incredible BF program ever written.
+
+OK, not that last one. That's totally cheating. And we'll be able to tell :)

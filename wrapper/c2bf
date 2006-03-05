@@ -1,0 +1,56 @@
+#!/bin/bash
+export DIR="`dirname $0`"
+export PATH="$DIR/../cc:$DIR/../ld:$DIR/../1tox:$DIR/../strip:$PATH"
+
+# Step one: list of files
+export CFILES=""
+export OFILES=""
+export TFILES=""
+export FILTER="cat"
+export STRIP="cat"
+while [ "$#" != "0" ]
+do
+    if [ "`echo $1 | grep '\.c$'`" ]
+    then
+        export CFILES="$CFILES $1"
+        export OFILES="$OFILES ${1/.c}.o"
+        export TFILES="$TFILES ${1/.c}.o"
+    elif [ "`echo $1 | grep '\.o$'`" ]
+    then
+        export OFILES="$OFILES $1"
+        
+    elif [ "$1" = "-help" -o \
+           "$1" = "--help" -o \
+           "$1" = "-h" ]
+    then
+        echo 'Use: c2bf [-16|-32] [-strip] {filenames}'
+        exit 0
+        
+    elif [ "$1" = "-16" ]
+    then
+        export FILTER="c2bf-1to16bit"
+    elif [ "$1" = "-32" ]
+    then
+        export FILTER="c2bf-1to32bit"
+        
+    elif [ "$1" = "-strip" ]
+    then
+        export STRIP="c2bf-strip"
+        
+    else
+        echo "I don't know how to handle $1!"
+    fi
+    
+    shift
+done
+
+# Step two: compile CFILES
+for i in $CFILES
+do
+    c2bf-cc < $i > ${i/.c}.o || exit 1
+done
+
+# Step three: put it all together
+cat $OFILES $DIR/../ld/__start.o $DIR/../math/bf_math.o | c2bf-ld > a.b.1
+$FILTER a.b.1 | $STRIP > a.b
+rm -f $TFILES a.b.1
