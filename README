@@ -12,7 +12,7 @@ cc/genbf/<generation>.c :)
 
 But overall, enjoy. This is a ridiculous project with no real purpose, so just
 have some fun with it. Maybe take the abstract syntax tree generation and port
-the gneration to a different esolang. Maybe change the algorithms to be more
+the genration to a different esolang. Maybe change the algorithms to be more
 efficient. Or maybe write the most incredible BF program ever written.
 
 OK, not that last one. That's totally cheating. And we'll be able to tell :)

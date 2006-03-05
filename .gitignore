@@ -1,0 +1,12 @@
+1tox/c2bf-1to2
+strip/c2bf-strip
+test
+x1tox/c2bf-1to2
+1tox/c2bf-1to4
+cc/c2bf-cc
+cc/c2bf-dispast
+cc/genbf/libgenbf.a
+cc/y.output
+cc/y.tab.h
+ld/c2bf-ld
+*.o
