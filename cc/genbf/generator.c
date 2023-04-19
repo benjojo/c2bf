@@ -421,4 +421,6 @@ struct type *intType()
     t->basic_type = TYPE_INT;
     t->array = 0;
     t->size = 1;
+    
+    return t;
 }
